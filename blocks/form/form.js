@@ -1,5 +1,4 @@
 import { readBlockConfig, toCamelCase } from '../../scripts/lib-franklin.js';
-import uploadFile from './uploadfile.js';
 
 const formatFns = await (async function imports() {
   try {
@@ -174,26 +173,6 @@ function createHidden(fd) {
   return input;
 }
 
-function createFile(fd) {
-  const field = createFieldWrapper(fd);
-  const fileInput = createInput(fd);
-  const status = document.createElement('span');
-  status.className = 'field-status';
-
-  field.append(fileInput);
-  field.append(status);
-  fileInput.addEventListener('change', async () => {
-    const form = fileInput?.closest('form');
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (submitButton) submitButton.disabled = true;
-    status.textContent = 'Uploading...'; // TODO - localization
-    const resp = await uploadFile(fileInput, form.dataset.fileuploadurl);
-    if (submitButton) submitButton.disabled = false;
-    status.textContent = resp ? 'Uploaded Successfully' : 'Upload failed';
-  });
-  return field;
-}
-
 function createLegend(fd) {
   return createLabel(fd, 'legend');
 }
@@ -243,7 +222,6 @@ const fieldRenderers = {
   button: createButton,
   output: createOutput,
   hidden: createHidden,
-  file: createFile,
   fieldset: createFieldSet,
   plaintext: createPlainText,
 };
@@ -255,7 +233,7 @@ function renderField(fd) {
     field = renderer(fd);
   } else {
     field = createFieldWrapper(fd);
-    field.append(createInput(fd));
+  field.append(createInput(fd));
   }
   if (fd.Description) {
     field.append(createHelpText(fd));
