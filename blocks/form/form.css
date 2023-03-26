@@ -70,7 +70,6 @@ main .form input,
 main .form textarea,
 main .form select {
     background-color: var(--form-input-background-color);
-    border: 1px solid var(--form-input-border-color);
     width: calc(100% - 16px);
     height: 40px;
     color: var(--form-label-color);;
