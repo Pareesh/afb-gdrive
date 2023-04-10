@@ -1,0 +1,3 @@
+(function() {
+    window.temp = "Pareesh";
+})();
