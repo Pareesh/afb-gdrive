@@ -121,7 +121,7 @@ function createFieldWrapper(fd, tagName = 'div') {
   if (fd.Fieldset) {
     fieldWrapper.dataset.fieldset = fd.Fieldset;
   }
-  if (fd.Mandatory.toLowerCase() === 'true') {
+  if (fd.Mandatory && fd.Mandatory.toLowerCase() === 'true') {
     fieldWrapper.dataset.required = '';
   }
   fieldWrapper.classList.add('field-wrapper');
