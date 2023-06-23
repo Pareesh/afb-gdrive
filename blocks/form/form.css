@@ -1,7 +1,7 @@
 :root {
-    --background-color-primary: #fff;
-    --label-color: #666;
-    --border-color: #818a91;
+    --background-color-primary: #84329B;
+    --label-color: #fff;
+    --border-color: #fff;
     --button-primary-color: #5F8DDA;
     --button-primary-hover-color: #035fe6;
     --form-font-size-m: 22px;
@@ -18,7 +18,7 @@
     --form-input-disable-color: var(--label-color);
     --form-input-border-size: 1px;
     --form-input-border-color: var(--border-color);
-    --form-input-background-color: var(--background-color-primary);
+    --form-input-background-color: aliceblue;
     --form-paragraph-color: var(--label-color);
     --form-paragraph-margin: 0 0 0.9rem;
     --form-paragraph-font-style: none;
@@ -47,19 +47,16 @@
 }
 
 main .form-container {
-    background-color: var(--mt-background-color-primary);
-    padding: var(--form-padding);
-    width: var(--form-width);
-    margin: var(--nav-height) auto;
-}
-
-main .form {
     background-color: var(--form-background-color);
+    padding: var(--form-padding);
+    margin: var(--nav-height) 0 0;
 }
 
 main .form form {
     display: grid;
+    margin: auto;
     grid-template-columns: repeat(var(--form-columns), 1fr);
+    width: var(--form-width);
     grid-gap: var(--form-field-vert-gap) var(--form-field-horz-gap);
 }
 
@@ -83,7 +80,6 @@ main .form :is(input, textarea, select) {
     border: var(--form-input-border-size) solid var(--form-input-border-color);
     width: calc(100% - 16px);
     height: 42px;
-    color: var(--form-label-color);
     padding: var(--form-input-padding);
     font-size: var(--form-input-font-size);
     max-width: unset;
@@ -149,6 +145,8 @@ main .form form p {
     font-style: var(--form-paragraph-font-style);
     color: var(--form-paragraph-color);
     margin: var(--form-paragraph-margin);
+    text-align: center;
+    grid-column: 1/-1;
 }
 
 main .form form fieldset > :is(.form-radio-wrapper:first-of-type, .form-checkbox-wrapper:first-of-type) {
@@ -183,18 +181,26 @@ main .form button {
     font-size: var(--form-button-font-size);
     font-weight: var(--mt-font-weight-bold);
     border-radius: unset;
+    width: 100%;
 }
 
 main .form button:hover {
     background: var(--form-button-background-hover-color);
 }
 
-main .form-submit-wrapper{
+main .form-submit-wrapper {
     width: var(--form-submit-width);
+    grid-column: 1/-1;
+    text-align: center;
 }
 
 main .form :is(input:disabled, textarea:disabled, select:disabled, button:disabled) {
     background-color: var(--form-input-disable-color);
+}
+
+main .form form .form-email-wrapper,
+main .form form .form-info {
+    grid-column: 1/-1;
 }
 
 @media (min-width: 576px) {
